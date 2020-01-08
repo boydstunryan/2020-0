@@ -1,1 +1,20 @@
 hello there i write a thingy in the line for funs
+i
+thnik
+that
+the
+sun
+is
+very
+bright
+sometimes
+but
+that
+is
+a
+good
+thing
+because
+it
+cold
+sometimes
