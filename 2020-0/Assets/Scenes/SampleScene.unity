@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 1722188696}
   - component: {fileID: 1722188695}
   m_Layer: 0
-  m_Name: New Sprite (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,8 +422,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16000001, y: 0.16, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 13.944268, y: 26.669996, z: 0.39353538}
+  m_Center: {x: 0.46880555, y: -0.061037652, z: -0.096767634}
 --- !u!54 &1722188696
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -477,7 +477,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 59ff562e45c57cd4398c54a2bf09271f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -496,8 +496,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722188694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.47, y: 3.19, z: 0}
-  m_LocalScale: {x: 7.4942, y: 36.615, z: 1}
+  m_LocalPosition: {x: -11.52, y: 3.66, z: 0}
+  m_LocalScale: {x: 0.2474489, y: 0.264788, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
