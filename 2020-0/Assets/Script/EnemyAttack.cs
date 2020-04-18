@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     public int attackDamage = 10;
 
     Animator anim;
-    GameObject player;
+    public GameObject player;
     PlayerHealth playerHealth;
     private EnemyHealth enemyHealth;
     bool playerInRange;
@@ -16,16 +16,17 @@ public class EnemyAttack : MonoBehaviour
  
     void Awake()
     {
-        player.gameObject.gameObject.GetComponent("Player");
+        
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
         {
+            Attack();
             playerInRange = true;
         }
     }
@@ -38,19 +39,18 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
-        {
-            Attack();
-        }
+    ////void Update()
+    //{      
+    //    if(playerInRange && enemyHealth.currentHealth > 0)
+    //    {
+    //        Attack();
+    //    }
 
-        if (playerHealth.currentHealth <= 0)
-        {
-            anim.SetTrigger("PlayerDead");
-        }
-    }
+    //    if (playerHealth.currentHealth <= 0)
+    //    {
+    //        anim.SetTrigger("PlayerDead");
+    //    }
+    //}
 
     void Attack()
     {
@@ -64,6 +64,6 @@ public class EnemyAttack : MonoBehaviour
 
     private void NewMethod()
     {
-        player.Health.TakeDamage(attackDamage);
+        player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
     }
 }

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpHeight;
     private bool doubleJump;
-
+    private Vector3 scale;
     private bool grounded;
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -20,12 +20,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        scale = transform.localScale;
     }
 
     private void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
     }
     // Update is called once per frame
     void Update()
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKeyUp(KeyCode.D))
         {
             animator.SetBool("isWalking", false);
         }
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
         
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKeyUp(KeyCode.A))
         {
             animator.SetBool("isWalking", false);
         }
@@ -75,17 +75,18 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
 
-        if (GetComponent<Rigidbody2D>().velocity.x > 0)
-            transform.localScale = new Vector3(5f, 5f, 1f);
+        if (GetComponent<Rigidbody>().velocity.x > 0)
+            transform.localScale = new Vector3(scale.x, scale.y, scale.z);
 
-#pragma warning disable CS0642 // Possible mistaken empty statement
-        else if (GetComponent<Rigidbody2D>().velocity.x < 0) ;
-#pragma warning restore CS0642 // Possible mistaken empty statement
-        transform.localScale = new Vector3(-5f, 5f, 1f);
+
+        else if (GetComponent<Rigidbody>().velocity.x < 0)
+
+            transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+        GetComponent<Rigidbody>().AddForce(new Vector3(moveVelocity,GetComponent<Rigidbody>().velocity.y,0));
     }
 
     void Jump()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+        GetComponent<Rigidbody>().velocity = new Vector2(GetComponent<Rigidbody>().velocity.x, jumpHeight);
     }
 }

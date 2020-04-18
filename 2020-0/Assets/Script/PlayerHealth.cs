@@ -29,28 +29,29 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
-    {
-        if (damaged)
-        {
-            damageImage.color = flashColor;
-        }
+    //private void Update()
+    //{
+    //    if (damaged)
+    //    {
+    //        damageImage.color = flashColor;
+    //    }
 
-        else
-        {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
+    //    else
+    //    {
+    //        damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+    //    }
 
-        damaged = false;
-    }
+    //    damaged = false;
+    //}
 
     public void TakeDamage (int amount)
     {
         damaged = true;
 
         currentHealth -= amount;
+        print(currentHealth / 100);
 
-        healthSlider.value = currentHealth;
+        healthSlider.value = (float)currentHealth / 100;
 
         if (currentHealth <= 0 && !isDead)
         {
