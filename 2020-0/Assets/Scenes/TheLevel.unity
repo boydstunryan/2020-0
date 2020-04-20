@@ -398,7 +398,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &265631194
 MonoBehaviour:
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58be65b7f33dae045b1fbd07f9ed1d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
+  moveSpeed: 20
   jumpHeight: 5
   groundCheck: {fileID: 636071003}
   groundCheckRadius: 0.1
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 675337517}
   - component: {fileID: 675337516}
   - component: {fileID: 675337515}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727702518}
   m_Layer: 0
-  m_Name: GroundCheck
+  m_Name: GroundCheckEnemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,7 +1072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727702517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -12.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2053274785}
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 903629012}
   - component: {fileID: 903629011}
   - component: {fileID: 903629009}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,8 +1107,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.944268, y: 26.669996, z: 0.39353538}
-  m_Center: {x: 0.46880555, y: -0.061037652, z: -0.096767634}
+  m_Size: {x: 13.944268, y: 26.669994, z: 4.4196324}
+  m_Center: {x: 0.46880555, y: -0.0610381, z: -0.4775865}
 --- !u!212 &903629011
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1362,7 +1362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1051298105}
   m_Layer: 0
-  m_Name: WallCheck
+  m_Name: WallCheckEnemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,7 +1376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051298104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -14, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2053274785}
@@ -1970,7 +1970,7 @@ GameObject:
   - component: {fileID: 1722188698}
   - component: {fileID: 1722188697}
   - component: {fileID: 1722188695}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2063,7 +2063,7 @@ GameObject:
   - component: {fileID: 1738711594}
   - component: {fileID: 1738711593}
   - component: {fileID: 1738711591}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2249,6 +2249,7 @@ GameObject:
   - component: {fileID: 1890703626}
   - component: {fileID: 1890703625}
   - component: {fileID: 1890703627}
+  - component: {fileID: 1890703628}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -2331,6 +2332,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 100
+--- !u!65 &1890703628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890703624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 23.210001, y: 22.43, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1893247682
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2359,7 @@ GameObject:
   - component: {fileID: 1893247685}
   - component: {fileID: 1893247684}
   - component: {fileID: 1893247683}
+  - component: {fileID: 1893247689}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2473,6 +2488,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1893247689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893247682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2ad34a172a1b24aa7c3b4575cb94c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1987615224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,7 +2511,7 @@ GameObject:
   - component: {fileID: 1987615228}
   - component: {fileID: 1987615227}
   - component: {fileID: 1987615225}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2693,7 +2720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053274783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.52, y: 2.99, z: 0}
+  m_LocalPosition: {x: 9.52, y: 2.38, z: 0}
   m_LocalScale: {x: 0.11311686, y: 0.1206382, z: 1}
   m_Children:
   - {fileID: 727702518}
@@ -2712,8 +2739,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 21.043674, y: 22.090448, z: 1.1827816}
+  m_Center: {x: 0.028742967, y: -0.17676519, z: 0.013324857}
 --- !u!54 &2053274787
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2787,12 +2814,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   moveRight: 0
-  wallCheck: {fileID: 0}
-  wallCheckRadius: 0
+  wallCheck: {fileID: 1051298105}
+  wallCheckRadius: 0.5
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 0
-  edgeCheck: {fileID: 0}
+    m_Bits: 1024
+  hittingWall: 0
+  notAtEdge: 0
+  edgeCheck: {fileID: 727702518}
 --- !u!1 &2143354141
 GameObject:
   m_ObjectHideFlags: 0

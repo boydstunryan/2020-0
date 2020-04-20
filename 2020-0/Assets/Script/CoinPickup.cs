@@ -7,11 +7,16 @@ public class CoinPickup : MonoBehaviour
 
     public int coinValue;
    
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         print("Youve collect the coin!!");
 
         ScoreManager.AddPoints(coinValue);
+
+        if (other.GetComponent<PlayerHealth>())
+        {
+            other.GetComponent<PlayerHealth>().Heal();
+        }
 
         Destroy(gameObject);
     }

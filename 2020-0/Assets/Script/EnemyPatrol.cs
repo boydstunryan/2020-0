@@ -6,21 +6,26 @@ public class EnemyPatrol : MonoBehaviour
 {
     public float moveSpeed;
     public bool moveRight;
-
+    private Vector3 scale;
     public Transform wallCheck;
     public float wallCheckRadius;
     public LayerMask whatIsWall;
-    private bool hittingWall;
+    public bool hittingWall;
 
-    private bool notAtEdge;
+    public bool notAtEdge;
     public Transform edgeCheck;
+
+    void Start()
+    {
+        scale = transform.localScale;
+    }
 
     // Update is called once per frame
     private void Update()
     {
-        notAtEdge = Physics2D.OverlapCircle(edgeCheck.position, wallCheckRadius, whatIsWall);
+        notAtEdge = Physics.CheckSphere(edgeCheck.position, wallCheckRadius);
 
-        hittingWall = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, whatIsWall);
+        hittingWall = Physics.CheckSphere(wallCheck.position, wallCheckRadius, whatIsWall);
 
         if (hittingWall || !notAtEdge)
         {
@@ -29,14 +34,14 @@ public class EnemyPatrol : MonoBehaviour
 
         if (moveRight)
         {
-            transform.localScale = new Vector3(-10f, 10f, 1f);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+            GetComponent<Rigidbody>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody>().velocity.y);
         }
 
         else
         {
-            transform.localScale = new Vector3(10f, 10f, 1f);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+            GetComponent<Rigidbody>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody>().velocity.y);
         }
     }
 }

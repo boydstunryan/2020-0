@@ -82,11 +82,12 @@ public class PlayerController : MonoBehaviour
         else if (GetComponent<Rigidbody>().velocity.x < 0)
 
             transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
-        GetComponent<Rigidbody>().AddForce(new Vector3(moveVelocity,GetComponent<Rigidbody>().velocity.y,0));
+        GetComponent<Rigidbody>().velocity = new Vector3(moveVelocity, GetComponent<Rigidbody>().velocity.y, 0);
     }
 
     void Jump()
     {
         GetComponent<Rigidbody>().velocity = new Vector2(GetComponent<Rigidbody>().velocity.x, jumpHeight);
+        animator.SetBool("isJumping", true);
     }
 }
