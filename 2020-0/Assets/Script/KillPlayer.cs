@@ -12,7 +12,7 @@ public class KillPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.name == "Player")
         {

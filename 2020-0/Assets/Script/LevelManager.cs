@@ -10,19 +10,19 @@ public class LevelManager : MonoBehaviour
     private GameObject player;
 
     public GameObject deathParticle;
-    public GameObject repsawnParticle;
+    public GameObject respawnParticle;
 
     public float respawnDelay;
 
     public int pointPenaltyOnDeath;
 
     private float gravityStore;
-    private Object respawnParticle;
+    //private Object respawnParticle;
 
     // Start is called before the first frame update
     void Start()
     {
-        pcRigid = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        //pcRigid = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
     }
     public void RespawnPlayer()
@@ -32,17 +32,20 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator RespawnPlayerCo()
     {
-        Instantiate(deathParticle, pcRigid.transform.position, pcRigid.transform.rotation);
+        Instantiate(deathParticle, player.transform.position, player.transform.rotation);
         player.SetActive(false);
         player.GetComponent<Renderer>().enabled = false;
-        gravityStore = pcRigid.GetComponent<Rigidbody2D>().gravityScale;
-        pcRigid.GetComponent<Rigidbody2D>().gravityScale = 0f;
-        pcRigid.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        //gravityStore = pcRigid.GetComponent<Rigidbody2D>().gravityScale;
+       // pcRigid.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        //pcRigid.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ScoreManager.AddPoints(-pointPenaltyOnDeath);
         Debug.Log("PC Respawn");
         yield return new WaitForSeconds(respawnDelay);
-        pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
-        pcRigid.transform.position = currentCheckPoint.transform.position;
+        //  pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
+        // pcRigid.transform.position = currentCheckPoint.transform.position;
+        player.transform.position = currentCheckPoint.transform.position;
+        player.GetComponent<PlayerHealth>().currentHealth = 80;
+        player.GetComponent<PlayerHealth>().Heal();
         player.SetActive(true);
         player.GetComponent<Renderer>().enabled = true;
         Instantiate(respawnParticle, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);

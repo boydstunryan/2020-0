@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public Image damageImage;
     public float flashSpeed = 5f;
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
+    public LevelManager levelManager;
 
     Animator anim;
     PlayerController playerController;
@@ -70,11 +71,12 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        playerShoot.DestroyFinishedParticle();
+        //playerShoot.DestroyFinishedParticle();
 
-        anim.SetTrigger("die");
+        //anim.SetTrigger("die");
 
-        playerController.enabled = false;
-        playerShoot.enabled = false;
+        levelManager.RespawnPlayer();
+       // playerController.enabled = false;
+       // playerShoot.enabled = false;
     }
 }

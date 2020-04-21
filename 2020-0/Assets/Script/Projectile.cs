@@ -19,10 +19,16 @@ public class Projectile : MonoBehaviour
     {
         player = GameObject.Find("Player");
 
-        enemyDeath = Resources.Load("Prefabs/PS") as GameObject;
+        // print(player);
+
+        //enemyDeath = Resources.Load("Prefabs/PS") as GameObject;
 
         if (player.transform.localScale.x < 0)
-            speed = -speed;
+        { 
+        speed = -speed;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+       // print(speed);
 
         Destroy(gameObject, timeOut);
     }
@@ -30,7 +36,10 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        GetComponent<Rigidbody>().velocity = new Vector2(speed, GetComponent<Rigidbody>().velocity.y);
+        transform.position += new Vector3(speed * Time.deltaTime,0,0);
+        //GetComponent<Rigidbody>().velocity = new Vector3(speed, GetComponent<Rigidbody>().velocity.y,0);
+       // print(GetComponent<Rigidbody>().velocity);
+       // print(transform.rotation);
     }
 
     void OnTriggerEnter(Collider other)
@@ -38,7 +47,7 @@ public class Projectile : MonoBehaviour
         if(other.tag == "Enemy")
         {
             print("Entering Trigger!" + other.gameObject);
-            Instantiate(enemyDeath, other.transform.position, other.transform.rotation);
+            //Instantiate(enemyDeath, other.transform.position, other.transform.rotation);
             Destroy(other.gameObject);
             ScoreManager.AddPoints(pointsForKill);
         }
